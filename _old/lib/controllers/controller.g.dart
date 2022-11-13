@@ -9,19 +9,18 @@ part of 'controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$Controller on ControllerBase, Store {
-  late final _$valorTotalAtom =
-      Atom(name: 'ControllerBase.valorTotal', context: context);
+  late final _$mesaAtom = Atom(name: 'ControllerBase.mesa', context: context);
 
   @override
-  double get valorTotal {
-    _$valorTotalAtom.reportRead();
-    return super.valorTotal;
+  int get mesa {
+    _$mesaAtom.reportRead();
+    return super.mesa;
   }
 
   @override
-  set valorTotal(double value) {
-    _$valorTotalAtom.reportWrite(value, super.valorTotal, () {
-      super.valorTotal = value;
+  set mesa(int value) {
+    _$mesaAtom.reportWrite(value, super.mesa, () {
+      super.mesa = value;
     });
   }
 
@@ -29,22 +28,22 @@ mixin _$Controller on ControllerBase, Store {
       ActionController(name: 'ControllerBase', context: context);
 
   @override
-  dynamic resetValorTotal(dynamic valor) {
+  void setEmail(dynamic valor) {
     final _$actionInfo = _$ControllerBaseActionController.startAction(
-        name: 'ControllerBase.resetValorTotal');
+        name: 'ControllerBase.setEmail');
     try {
-      return super.resetValorTotal(valor);
+      return super.setEmail(valor);
     } finally {
       _$ControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic changeValorTotal(dynamic vAlteracao) {
+  dynamic alteraMesa(dynamic value) {
     final _$actionInfo = _$ControllerBaseActionController.startAction(
-        name: 'ControllerBase.changeValorTotal');
+        name: 'ControllerBase.alteraMesa');
     try {
-      return super.changeValorTotal(vAlteracao);
+      return super.alteraMesa(value);
     } finally {
       _$ControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -53,7 +52,7 @@ mixin _$Controller on ControllerBase, Store {
   @override
   String toString() {
     return '''
-valorTotal: ${valorTotal}
+mesa: ${mesa}
     ''';
   }
 }

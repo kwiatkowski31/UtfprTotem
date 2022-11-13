@@ -9,19 +9,15 @@ class Controller = ControllerBase with _$Controller;
 abstract class ControllerBase with Store{
 
   @observable
-  double valorTotal = 0.0;
-
-
-///-----------------------------------------------[ Actions ]
+  int mesa = 0;
 
   @action
-  resetValorTotal( valor ){
-    valorTotal = valor;
-  }
+  void setEmail(valor) => mesa = valor;
+
 
   @action
-  changeValorTotal( vAlteracao ){
-    valorTotal += vAlteracao;
+  alteraMesa( value ){
+    mesa = value;
   }
 
 }

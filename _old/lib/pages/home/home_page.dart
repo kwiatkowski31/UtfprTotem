@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, prefer_const_constructors, avoid_print, sized_box_for_whitespace
 
 import 'package:utfprtotem/components/pages/generic_button.dart';
+import 'package:utfprtotem/controllers/config_controller.dart';
 import 'package:utfprtotem/controllers/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,16 +33,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<Controller>( context );
+    final controller        = Provider.of<Controller>( context );
+    final configController  = Provider.of<ConfigController>( context );
 
     return Scaffold(
+
       resizeToAvoidBottomInset: false,
       //appBar: _appBar(),
       body: OrientationBuilder(
         builder: (context, orientation) {
           return orientation == Orientation.portrait
-            ? _body( 100.h, 100.w, controller )
-            : _body( 100.w, 100.h, controller );
+            ? _body( 100.h, 100.w, controller, configController )
+            : _body( 100.w, 100.h, controller, configController );
         }
       )
       //_body(),
@@ -50,7 +53,22 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _body( height, width, controller ){
+  /*_appBar(){
+    return AppBar(
+      iconTheme: IconThemeData( color: cor_G, size: 100.h * 0.05 ),
+      titleSpacing: 0,
+      backgroundColor: Colors.white,
+      shadowColor: Colors.transparent,
+      leading: Builder(
+        builder: (context) => IconButton(
+          icon: Icon(Icons.menu_rounded),
+          onPressed: () => Scaffold.of(context).openDrawer(),
+        ),
+      ),
+    );
+  }*/
+
+  _body( height, width, controller, configController ){
     return Container(
       width: 100.h,
       height: 100.h,

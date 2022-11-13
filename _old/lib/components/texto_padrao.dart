@@ -21,29 +21,10 @@ textoPadrao( height, texto, ajuste, fontW, maxL, cor, {letterSpc = 1.5} ){
   );
 }
 
-
 ///---------------------------------------------------------------------------------[ Texto_Padrao_Fonte2 ]
 textoPadraoF2( height, texto, ajuste, fontW, maxL, cor, {letterSpc = 1.5} ){
   return Text(
     texto,
-    style: GoogleFonts.chakraPetch(//josefinSans
-      textStyle: TextStyle(
-        fontSize: 100.h * ajuste,//0.025,
-        letterSpacing: letterSpc,//1.5,
-        color: cor,//Colors.black,
-        fontWeight: fontW,
-        decoration: TextDecoration.none,
-      ),
-    ),
-    maxLines: maxL,
-    overflow: TextOverflow.ellipsis,
-  );
-}
-
-
-///---------------------------------------------------------------------------------[ Texto_Item_Cardapio ]
-textoCardProduto( texto, ajuste, fontW, maxL, cor, {letterSpc = 1.5}){
-  return Text(texto,
     style: GoogleFonts.raleway(//josefinSans
       textStyle: TextStyle(
         fontSize: 100.h * ajuste,//0.025,

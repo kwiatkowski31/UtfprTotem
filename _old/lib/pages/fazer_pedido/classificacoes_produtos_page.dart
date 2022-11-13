@@ -4,6 +4,7 @@ import 'package:utfprtotem/components/pages/generic_animated_button.dart';
 import 'package:utfprtotem/components/pages/generic_button.dart';
 import 'package:utfprtotem/components/pages/grid_classificacao.dart';
 import 'package:utfprtotem/components/texto_padrao.dart';
+import 'package:utfprtotem/controllers/config_controller.dart';
 import 'package:utfprtotem/controllers/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,6 @@ import 'package:utfprtotem/pages/finalizar_pedido/carrinho_page.dart';
 import 'package:utfprtotem/pages/fazer_pedido/produtos_page.dart';
 import 'package:utfprtotem/utils/nav.dart';
 import 'package:utfprtotem/utils/popula_lista_classificacoes.dart';
-import 'package:utfprtotem/venda/carrinho.dart';
 
 class ClassificacoesProdutosPage extends StatefulWidget {
   const ClassificacoesProdutosPage({Key? key}) : super(key: key);
@@ -38,7 +38,8 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<Controller>( context );
+    final controller        = Provider.of<Controller>( context );
+    final configController  = Provider.of<ConfigController>( context );
 
     return Scaffold(
 
@@ -47,8 +48,8 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
       body: OrientationBuilder(
         builder: (context, orientation) {
           return orientation == Orientation.portrait
-            ? _body( 100.h, 100.w, controller )
-            : _body( 100.w, 100.h, controller );
+            ? _body( 100.h, 100.w, controller, configController )
+            : _body( 100.w, 100.h, controller, configController );
         }
       )
       //_body(),
@@ -57,7 +58,7 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
     );
   }
 
-  _body( height, width, controller ){
+  _body( height, width, controller, configController ){
     return Container(
       width: 100.h,
       height: 100.h,
@@ -72,7 +73,7 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
 
           _mid(),
 
-          _bottom( controller )
+          _bottom()
 
         ],
       )
@@ -165,12 +166,12 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
               ),
             ],
           )
-          : Container( child: Text('Não foi possível carregar as classificações!') ),
+          : Container( child: Text('Não foi possível carregar as classificacções!') ),
       );
   }
 
 ///--------------------------------------------------------------------------[ Bottom ]
-  _bottom( controller ){
+  _bottom(){
     return 
       Container(
         height: 15.h,
@@ -188,21 +189,36 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
               padding: EdgeInsets.only( left: 5.w ),
 
               color: Colors.green[400],
-              //child: textoPadrao( 5.h, 'R\$ 10,00', 0.04, FontWeight.normal, 1, Colors.black ),//height, texto, ajuste, fontW, maxL, crossAxisAlignment
-              child: textoPadrao( 5.h, 'R\$ ${ Carrinho.sumAll().toStringAsFixed(2) }', 0.04, FontWeight.normal, 1, Colors.black ),//height, texto, ajuste, fontW, maxL, cor
+              child: textoPadrao( 5.h, 'R\$ 10,00', 0.04, FontWeight.normal, 1, Colors.black ),//height, texto, ajuste, fontW, maxL, cor
             ),
+
+            /*Container(
+              padding: EdgeInsets.only( right: 5.w ),
+              child: GenericButton(
+                height: 10.h, 
+                width: 35.w, 
+                fontSize: 0.03,
+                background: Colors.white, 
+                title: 'Finalizar', 
+                fontColor: Colors.black,
+                onPressed: () {
+                  print('ClassificacoesProdutosPage ~> Clicou em Finalizar!');
+                  push( context, CarrinhoPage() );
+                }
+              ),
+            ),*/
 
             Container(
               padding: EdgeInsets.only( right: 5.w ),
               child: GenericAnimatedButton(
                 height: 10.h, 
-                width: 40.w, 
+                width: 35.w, 
                 fontSize: 0.03,
                 buttonColor: Color.fromARGB(255, 53, 184, 81), 
                 label: 'Finalizar', 
                 fontColor: Colors.white,
                 onPressed: () {
-                  print('ClassificacoesProdutosPage ~> Clicou em Finalizar!');
+                  print('ClassificacoesProdutosPage ~> Clicou em Finalizar!');print('ClassificacoesProdutosPage ~> Clicou em Voltar!');
                   push( context, CarrinhoPage() );
                 }
               ),
@@ -221,7 +237,7 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
       classificacao: listaClassificacoes![ i ],
       isClassificacao: true,
       onPressed: (){
-        print('ProdutosPage ~> Touched: ${listaClassificacoes![ i ].getCodClass()}');
+        print('ProdutosPage ~> Touched: ${listaClassificacoes![ i ].getNome()}');
         push( context, ProdutosPage( listaClassificacoes![ i ].getCodClass() ) );
       },
     );

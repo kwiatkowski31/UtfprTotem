@@ -15,4 +15,5 @@ class ProdutoModel{
   int getCodProduto(){ return _codProduto!; }
   double getPreco(){ return _preco!; }
 
+
 }
