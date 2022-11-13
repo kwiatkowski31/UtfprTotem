@@ -17,10 +17,13 @@ class Carrinho {
   }
 
   static sumAll(){
-    double valorTotal = 0.0;
+    double valorTotal = 0.00;
 
-    for( ProdutoCarrinho p in carrinho! ) {
-      valorTotal += p.getPreco() * p.getQuantidade();
+    /**/
+    if( carrinho != null ){
+      for( ProdutoCarrinho p in carrinho! ) {
+        valorTotal += p.getPreco() * p.getQuantidade();
+      }
     }
 
     return valorTotal;

@@ -94,22 +94,6 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             
-            /*Container(
-              padding: EdgeInsets.only( left: 5.w ),
-              child: GenericButton(
-                height: 10.h, 
-                width: 20.w, 
-                fontSize: 0.015,
-                background: Colors.white, 
-                title: 'Voltar', 
-                fontColor: Colors.black,
-                onPressed: () {
-                  print('ClassificacoesProdutosPage ~> Clicou em Voltar!');
-                  pop( context );
-                }
-              ),
-            ),*/
-
             Container(
               padding: EdgeInsets.only( left: 5.w ),
               child: GenericAnimatedButton(
@@ -188,7 +172,6 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
               padding: EdgeInsets.only( left: 5.w ),
 
               color: Colors.green[400],
-              //child: textoPadrao( 5.h, 'R\$ 10,00', 0.04, FontWeight.normal, 1, Colors.black ),//height, texto, ajuste, fontW, maxL, crossAxisAlignment
               child: textoPadrao( 5.h, 'R\$ ${ Carrinho.sumAll().toStringAsFixed(2) }', 0.04, FontWeight.normal, 1, Colors.black ),//height, texto, ajuste, fontW, maxL, cor
             ),
 
@@ -226,8 +209,6 @@ class _ClassificacoesProdutosPageState extends State<ClassificacoesProdutosPage>
       },
     );
   }
-
-
 
 
 }

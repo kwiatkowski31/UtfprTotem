@@ -22,14 +22,6 @@ import 'package:firebase_core/firebase_core.dart';
  */
 
 
-/*
-
-Adicionar: Colocar imagem dos produtos no card de adicionar
-
-
-*/
-
-
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp( options: DefaultFirebaseOptions.currentPlataform );
