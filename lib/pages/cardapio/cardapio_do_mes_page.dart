@@ -1,5 +1,6 @@
 // ignore_for_file: unused_local_variable, prefer_const_constructors, avoid_print
 
+import 'package:utfprtotem/components/pages/card_item_cardapio.dart';
 import 'package:utfprtotem/components/pages/card_produto_cardapio.dart';
 import 'package:utfprtotem/components/pages/generic_animated_button.dart';
 import 'package:utfprtotem/components/pages/generic_button.dart';
@@ -131,9 +132,18 @@ class _CardapioDoMesPageState extends State<CardapioDoMesPage> {
               itemCount: listaCardapio.length,
               itemBuilder: ( BuildContext context, int index ) {
           
-                return CardProdutoCardapio( 
+                /*return CardProdutoCardapio( 
                   produto: listaCardapio[ index ],
+                );*/
+
+                return CardItemCardapio(
+                  height: 10.h, 
+                  width: 100.w,
+                  produto: listaCardapio[ index ],
+                  image: 'assets/images/card_image.jpg',
+                  onPressed: () {},
                 );
+
               }
             );
 
